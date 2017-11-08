@@ -81,8 +81,8 @@ class StatusBar extends View
 
     @registerContextMenu()
 
-    @subscriptions.add atom.tooltips.add @plusBtn, title: 'New Terminal'
-    @subscriptions.add atom.tooltips.add @closeBtn, title: 'Close All'
+    @subscriptions.add atom.tooltips.add @plusBtn[0], title: 'New Terminal'
+    @subscriptions.add atom.tooltips.add @closeBtn[0], title: 'Close All'
 
     @statusContainer.on 'dblclick', (event) =>
       @newTerminalView() unless event.target != event.delegateTarget
