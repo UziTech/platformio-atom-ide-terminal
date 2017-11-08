@@ -43,13 +43,13 @@ class PlatformIOTerminalView extends View
     @subscriptions = new CompositeDisposable
     @emitter = new Emitter
 
-    @subscriptions.add atom.tooltips.add @closeBtn,
+    @subscriptions.add atom.tooltips.add @closeBtn[0],
       title: 'Close'
-    @subscriptions.add atom.tooltips.add @hideBtn,
+    @subscriptions.add atom.tooltips.add @hideBtn[0],
       title: 'Hide'
-    @subscriptions.add @maximizeBtn.tooltip = atom.tooltips.add @maximizeBtn,
+    @subscriptions.add @maximizeBtn.tooltip = atom.tooltips.add @maximizeBtn[0],
       title: 'Fullscreen'
-    @inputBtn.tooltip = atom.tooltips.add @inputBtn,
+    @inputBtn.tooltip = atom.tooltips.add @inputBtn[0],
       title: 'Insert Text'
 
     @prevHeight = atom.config.get('platformio-ide-terminal.style.defaultPanelHeight')
@@ -190,14 +190,14 @@ class PlatformIOTerminalView extends View
     @onTransitionEnd => @focus()
 
     if @maximized
-      @maximizeBtn.tooltip = atom.tooltips.add @maximizeBtn,
+      @maximizeBtn.tooltip = atom.tooltips.add @maximizeBtn[0],
         title: 'Fullscreen'
       @subscriptions.add @maximizeBtn.tooltip
       @adjustHeight @prevHeight
       btn.removeClass('icon-screen-normal').addClass('icon-screen-full')
       @maximized = false
     else
-      @maximizeBtn.tooltip = atom.tooltips.add @maximizeBtn,
+      @maximizeBtn.tooltip = atom.tooltips.add @maximizeBtn[0],
         title: 'Normal'
       @subscriptions.add @maximizeBtn.tooltip
       @adjustHeight @maxHeight
@@ -214,7 +214,7 @@ class PlatformIOTerminalView extends View
         icon = @maximizeBtn.children('span')
 
         @maxHeight = lastOpenedView.maxHeight
-        @maximizeBtn.tooltip = atom.tooltips.add @maximizeBtn,
+        @maximizeBtn.tooltip = atom.tooltips.add @maximizeBtn[0],
           title: 'Normal'
         @subscriptions.add @maximizeBtn.tooltip
         icon.removeClass('icon-screen-full').addClass('icon-screen-normal')
